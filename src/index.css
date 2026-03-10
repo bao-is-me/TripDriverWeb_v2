@@ -1076,6 +1076,21 @@ section {
   margin-bottom: 3rem;
 }
 
+.contact-email {
+  display: inline-block;
+  color: var(--black);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  border-bottom: 1px solid var(--black);
+  padding-bottom: 0.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.download-actions {
+  align-items: center;
+}
+
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -1156,6 +1171,20 @@ footer {
 .footer-brand p {
   color: var(--text-gray);
   font-size: 1rem;
+}
+
+.footer-contact-email {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  width: fit-content;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  padding-bottom: 0.2rem;
+}
+
+.footer-contact-email:hover {
+  opacity: 0.7;
 }
 
 .footer-links {
@@ -1520,9 +1549,26 @@ footer {
   .contact-info h3 {
     font-size: 2rem;
   }
+
+  .contact-info p {
+    margin-bottom: 1.75rem;
+  }
+
+  .download-actions {
+    width: 100%;
+  }
+
+  .download-actions .btn-primary {
+    width: 100%;
+    max-width: 280px;
+  }
 }
 
 @media (max-width: 480px) {
+  .mobile-menu {
+    padding: 5.5rem 1.5rem 2rem;
+  }
+
   .hero {
     padding: 3.5rem 1.25rem 2.5rem;
   }
@@ -1552,6 +1598,14 @@ footer {
 
   .hero-desc {
     font-size: 0.9rem;
+  }
+
+  .contact-email {
+    word-break: break-word;
+  }
+
+  .download-actions .btn-primary {
+    max-width: none;
   }
 
   .stats-grid {

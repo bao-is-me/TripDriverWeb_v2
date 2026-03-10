@@ -10,6 +10,8 @@ declare global {
 }
 
 export default function TripDriverWeb() {
+    const apkDownloadHref = '/tripdriver.apk';
+    const contactEmail = 'tripdriver201@gmail.com';
     const [scrollProgress, setScrollProgress] = useState(0);
     const [menuOpen, setMenuOpen] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -205,7 +207,7 @@ export default function TripDriverWeb() {
                             TripDriver là nền tảng kết nối người cần thuê xe với chủ xe cho thuê, giúp hành trình trở nên chủ động, rõ ràng và thuận tiện hơn ngay trên một ứng dụng.
                         </p>
                         <div className="hero-cta">
-                            <a href="#ho-tro" onClick={(e) => handleSmoothScroll(e, '#ho-tro')} className="btn btn-primary">
+                            <a href={apkDownloadHref} download="tripdriver.apk" className="btn btn-primary">
                                 <iconify-icon icon="solar:download-linear" className="text-lg"></iconify-icon>
                                 <span>Tải ứng dụng</span>
                             </a>
@@ -481,20 +483,13 @@ export default function TripDriverWeb() {
                         <p>
                             Khám phá cách thuê xe tự lái thuận tiện hơn trên một nền tảng được thiết kế cho người dùng hiện đại và đối tác chuyên nghiệp.
                         </p>
-                        <div className="flex flex-wrap gap-4 mt-8">
-                            <a href="#" className="btn btn-secondary bordered flex items-center gap-3 w-fit pr-[2rem]">
-                                <iconify-icon icon="solar:apple-linear" className="text-2xl mr-[0.7rem]"></iconify-icon>
-                                <div className="text-left flex flex-col leading-tight ml-2">
-                                    <span className="text-xs text-[var(--text-gray)] tracking-wide font-normal">Tải trên</span>
-                                    <span className="font-semibold text-sm">App Store</span>
-                                </div>
-                            </a>
-                            <a href="#" className="btn btn-secondary bordered flex items-center gap-3 w-fit pr-[2rem]">
-                                <iconify-icon icon="solar:play-stream-linear" className="text-2xl mr-[0.7rem]"></iconify-icon>
-                                <div className="text-left flex flex-col leading-tight ml-2">
-                                    <span className="text-xs text-[var(--text-gray)] tracking-wide font-normal">Tải trên</span>
-                                    <span className="font-semibold text-sm">Google Play</span>
-                                </div>
+                        <a href={`mailto:${contactEmail}`} className="contact-email">
+                            {contactEmail}
+                        </a>
+                        <div className="download-actions flex flex-wrap gap-4 mt-8">
+                            <a href={apkDownloadHref} download="tripdriver.apk" className="btn btn-primary">
+                                <iconify-icon icon="solar:download-linear" className="text-lg"></iconify-icon>
+                                <span>Tải ứng dụng</span>
                             </a>
                         </div>
                     </div>
@@ -532,6 +527,7 @@ export default function TripDriverWeb() {
                             <h2 className="text-2xl font-playfair m-0 tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>TRIPDRIVER</h2>
                         </div>
                         <p>Nền tảng kết nối người thuê xe và chủ xe cho trải nghiệm thuê xe tự lái rõ ràng, thuận tiện hơn.</p>
+                        <a href={`mailto:${contactEmail}`} className="footer-contact-email">{contactEmail}</a>
                     </div>
                     <div className="footer-links">
                         <div className="footer-column">
@@ -557,7 +553,6 @@ export default function TripDriverWeb() {
                             <ul>
                                 <li><a href="https://www.facebook.com/profile.php?id=61587796650900" target="_blank" rel="noopener noreferrer">Facebook</a></li>
                                 <li><a href="#">TikTok</a></li>
-                                <li><a href="#">Email</a></li>
                             </ul>
                         </div>
                     </div>
