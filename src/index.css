@@ -402,7 +402,13 @@ body {
   animation-delay: 0.7s;
 }
 
+.hero-title .line:nth-child(3) {
+  padding-top: 0.12em;
+  padding-bottom: 0.18em;
+}
+
 .hero-title em {
+  display: inline-block;
   font-style: italic;
   color: var(--text-gray);
 }
