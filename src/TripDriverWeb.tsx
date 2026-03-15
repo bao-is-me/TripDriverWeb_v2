@@ -15,8 +15,6 @@ export default function TripDriverWeb() {
     const [scrollProgress, setScrollProgress] = useState(0);
     const [menuOpen, setMenuOpen] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitStatus, setSubmitStatus] = useState<string | null>(null);
 
     // Refs for tracking
     const projectsScrollRef = useRef<HTMLDivElement>(null);
@@ -115,22 +113,6 @@ export default function TripDriverWeb() {
                 block: 'start'
             });
         }
-    };
-
-    const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-        setSubmitStatus('Đang gửi...');
-
-        setTimeout(() => {
-            setSubmitStatus('Đã gửi thành công');
-            (e.target as HTMLFormElement).reset();
-
-            setTimeout(() => {
-                setIsSubmitting(false);
-                setSubmitStatus(null);
-            }, 2000);
-        }, 1500);
     };
 
     return (
@@ -493,28 +475,11 @@ export default function TripDriverWeb() {
                             </a>
                         </div>
                     </div>
-                    <form className="contact-form reveal" onSubmit={handleFormSubmit}>
-                        <div className="form-group">
-                            <input type="text" className="form-input" placeholder=" " required />
-                            <label className="form-label">Họ tên</label>
+                    <div className="contact-visual reveal reveal-delay-1">
+                        <div className="contact-phone-frame">
+                            <img src="/PhonePic.png" alt="Giao diện ứng dụng TripDriver" className="contact-phone-image" />
                         </div>
-                        <div className="form-group">
-                            <input type="text" className="form-input" placeholder=" " required />
-                            <label className="form-label">Email / Số điện thoại</label>
-                        </div>
-                        <div className="form-group">
-                            <textarea className="form-input form-textarea" placeholder=" " required></textarea>
-                            <label className="form-label">Câu hỏi hoặc yêu cầu hỗ trợ</label>
-                        </div>
-                        <button
-                            type="submit"
-                            className="btn btn-primary self-start"
-                            style={{ opacity: isSubmitting ? 0.7 : 1 }}
-                            disabled={isSubmitting}
-                        >
-                            <span className="ml-[1.4rem] mr-[1.4rem]">{submitStatus || 'Gửi yêu cầu'}</span>
-                        </button>
-                    </form>
+                    </div>
                 </div>
             </section>
 
@@ -552,7 +517,6 @@ export default function TripDriverWeb() {
                             <h4>Kết nối</h4>
                             <ul>
                                 <li><a href="https://www.facebook.com/profile.php?id=61587796650900" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-                                <li><a href="#">TikTok</a></li>
                             </ul>
                         </div>
                     </div>
