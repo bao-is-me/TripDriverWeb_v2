@@ -3,16 +3,16 @@ import TripDriverWeb from "./TripDriverWeb";
 import QAPage from "./QAPage";
 
 function getCurrentPage() {
-    return window.location.hash.startsWith("#/qa") ? "qa" : "home";
+    return window.location.pathname === "/faq-thue-xe-tu-lai" ? "qa" : "home";
 }
 
 export default function App() {
     const [page, setPage] = useState(getCurrentPage);
 
     useEffect(() => {
-        const handleHashChange = () => setPage(getCurrentPage());
-        window.addEventListener("hashchange", handleHashChange);
-        return () => window.removeEventListener("hashchange", handleHashChange);
+        const handleLocationChange = () => setPage(getCurrentPage());
+        window.addEventListener("popstate", handleLocationChange);
+        return () => window.removeEventListener("popstate", handleLocationChange);
     }, []);
 
     return page === "qa" ? <QAPage /> : <TripDriverWeb />;

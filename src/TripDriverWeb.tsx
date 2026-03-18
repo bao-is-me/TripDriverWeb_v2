@@ -147,7 +147,7 @@ export default function TripDriverWeb() {
                     <li><a href="#nguoi-dung" onClick={(e) => handleSmoothScroll(e, '#nguoi-dung')}>Người dùng</a></li>
                     <li><a href="#doi-tac" onClick={(e) => handleSmoothScroll(e, '#doi-tac')}>Đối tác</a></li>
                     <li><a href="#ve-tripdriver" onClick={(e) => handleSmoothScroll(e, '#ve-tripdriver')}>Về TripDriver</a></li>
-                    <li><a href="/#/qa">Hỗ trợ</a></li>
+                    <li><a href="/faq-thue-xe-tu-lai">Hỗ trợ</a></li>
                 </ul>
 
                 <button className="menu-btn pointer-events-auto" aria-label="Menu" onClick={() => setMenuOpen(!menuOpen)}>
@@ -162,7 +162,7 @@ export default function TripDriverWeb() {
                 <a href="#doi-tac" onClick={(e) => handleSmoothScroll(e, '#doi-tac')}>Đối tác</a>
                 <a href="#ve-tripdriver" onClick={(e) => handleSmoothScroll(e, '#ve-tripdriver')}>Về TripDriver</a>
                 <a href="#an-toan" onClick={(e) => handleSmoothScroll(e, '#an-toan')}>An toàn &amp; Tin cậy</a>
-                <a href="/#/qa" onClick={() => setMenuOpen(false)}>Hỗ trợ</a>
+                <a href="/faq-thue-xe-tu-lai" onClick={() => setMenuOpen(false)}>Hỗ trợ</a>
             </div>
 
             {/* Hero Section */}

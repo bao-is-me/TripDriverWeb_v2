@@ -48,7 +48,7 @@ export default function QAPage() {
     const [menuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
-        document.title = 'TripDriver QA - Hỗ trợ thuê xe tự lái';
+        document.title = 'FAQ Thuê Xe Tự Lái - TripDriver';
         window.scrollTo({ top: 0, behavior: 'auto' });
     }, []);
 
@@ -72,7 +72,7 @@ export default function QAPage() {
                     <li><a href="/#nguoi-dung">Người dùng</a></li>
                     <li><a href="/#doi-tac">Đối tác</a></li>
                     <li><a href="/#ve-tripdriver">Về TripDriver</a></li>
-                    <li><a href="/#/qa">Hỗ trợ</a></li>
+                    <li><a href="/faq-thue-xe-tu-lai">Hỗ trợ</a></li>
                 </ul>
 
                 <button className="menu-btn pointer-events-auto" aria-label="Menu" onClick={() => setMenuOpen(!menuOpen)}>
@@ -85,7 +85,7 @@ export default function QAPage() {
                 <a href="/#nguoi-dung" onClick={() => setMenuOpen(false)}>Người dùng</a>
                 <a href="/#doi-tac" onClick={() => setMenuOpen(false)}>Đối tác</a>
                 <a href="/#ve-tripdriver" onClick={() => setMenuOpen(false)}>Về TripDriver</a>
-                <a href="/#/qa" onClick={() => setMenuOpen(false)}>Hỗ trợ</a>
+                <a href="/faq-thue-xe-tu-lai" onClick={() => setMenuOpen(false)}>Hỗ trợ</a>
             </div>
 
             <main className="qa-page">
@@ -137,9 +137,9 @@ export default function QAPage() {
                         <div className="footer-column">
                             <h4>Hỗ trợ</h4>
                             <ul>
-                                <li><a href="/#/qa">Câu hỏi thường gặp</a></li>
-                                <li><a href="/#/qa">Hướng dẫn sử dụng</a></li>
-                                <li><a href="/#/qa">Thông tin thuê xe</a></li>
+                                <li><a href="/faq-thue-xe-tu-lai">Câu hỏi thường gặp</a></li>
+                                <li><a href="/faq-thue-xe-tu-lai">Hướng dẫn sử dụng</a></li>
+                                <li><a href="/faq-thue-xe-tu-lai">Thông tin thuê xe</a></li>
                             </ul>
                         </div>
                         <div className="footer-column">
