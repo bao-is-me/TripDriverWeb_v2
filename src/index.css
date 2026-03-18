@@ -1145,6 +1145,86 @@ section {
   transform-origin: center;
 }
 
+/* QA Page */
+.qa-page {
+  background: var(--off-white);
+  min-height: 100vh;
+}
+
+.qa-hero {
+  padding: 10rem 8rem 4rem;
+}
+
+.qa-hero-copy {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.qa-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 400;
+  letter-spacing: -2px;
+  line-height: 1.05;
+}
+
+.qa-title em {
+  font-style: italic;
+  color: var(--text-gray);
+}
+
+.qa-desc {
+  margin-top: 1.75rem;
+  max-width: 42rem;
+  color: var(--text-gray);
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+.qa-list-section {
+  padding: 0 8rem 8rem;
+}
+
+.qa-list {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.qa-card {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  gap: 2rem;
+  padding: 2rem 2.2rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(10px);
+}
+
+.qa-order {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.1rem;
+  line-height: 1;
+  color: var(--text-gray);
+}
+
+.qa-question {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.85rem;
+  color: var(--black);
+}
+
+.qa-answer {
+  color: var(--text-gray);
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
 /* Footer */
 footer {
   background: var(--black);
@@ -1312,6 +1392,14 @@ footer {
     padding: 8rem 4rem;
   }
 
+  .qa-hero {
+    padding: 9rem 4rem 3rem;
+  }
+
+  .qa-list-section {
+    padding: 0 4rem 6rem;
+  }
+
   .hero {
     padding: 5rem 3rem;
   }
@@ -1407,6 +1495,11 @@ footer {
     max-width: 760px;
   }
 
+  .qa-card {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
   .contact-copy {
     gap: 2rem;
     padding-top: 0;
@@ -1449,6 +1542,23 @@ footer {
 
   section {
     padding: 4rem 1.5rem;
+  }
+
+  .qa-hero {
+    padding: 7rem 1.5rem 2.5rem;
+  }
+
+  .qa-list-section {
+    padding: 0 1.5rem 4rem;
+  }
+
+  .qa-title {
+    font-size: clamp(2.2rem, 8vw, 3.25rem);
+    letter-spacing: -1px;
+  }
+
+  .qa-question {
+    font-size: 1.45rem;
   }
 
   .hero {
@@ -1593,6 +1703,11 @@ footer {
 @media (max-width: 480px) {
   .mobile-menu {
     padding: 5.5rem 1.5rem 2rem;
+  }
+
+  .qa-card {
+    padding: 1.5rem 1.25rem;
+    border-radius: 20px;
   }
 
   .hero {
