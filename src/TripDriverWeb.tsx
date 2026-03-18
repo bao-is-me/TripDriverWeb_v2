@@ -145,7 +145,6 @@ export default function TripDriverWeb() {
                     <li><a href="#nguoi-dung" onClick={(e) => handleSmoothScroll(e, '#nguoi-dung')}>Người dùng</a></li>
                     <li><a href="#doi-tac" onClick={(e) => handleSmoothScroll(e, '#doi-tac')}>Đối tác</a></li>
                     <li><a href="#ve-tripdriver" onClick={(e) => handleSmoothScroll(e, '#ve-tripdriver')}>Về TripDriver</a></li>
-                    <li><a href="#ho-tro" onClick={(e) => handleSmoothScroll(e, '#ho-tro')}>Hỗ trợ</a></li>
                 </ul>
 
                 <button className="menu-btn pointer-events-auto" aria-label="Menu" onClick={() => setMenuOpen(!menuOpen)}>
@@ -160,7 +159,6 @@ export default function TripDriverWeb() {
                 <a href="#doi-tac" onClick={(e) => handleSmoothScroll(e, '#doi-tac')}>Đối tác</a>
                 <a href="#ve-tripdriver" onClick={(e) => handleSmoothScroll(e, '#ve-tripdriver')}>Về TripDriver</a>
                 <a href="#an-toan" onClick={(e) => handleSmoothScroll(e, '#an-toan')}>An toàn &amp; Tin cậy</a>
-                <a href="#ho-tro" onClick={(e) => handleSmoothScroll(e, '#ho-tro')}>Hỗ trợ</a>
             </div>
 
             {/* Hero Section */}
@@ -186,7 +184,7 @@ export default function TripDriverWeb() {
                             <span className="line"><span className="word" style={{ animationDelay: '0.7s' }}><em>dễ dàng</em></span></span>
                         </h1>
                         <p className="hero-desc">
-                            TripDriver là nền tảng kết nối người cần thuê xe với chủ xe cho thuê, giúp hành trình trở nên chủ động, rõ ràng và thuận tiện hơn ngay trên một ứng dụng.
+                            TripDriver là nền tảng thuê xe tự lái giá rẻ ở TPHCM, kết nối người cần thuê xe với chủ xe cho thuê để hành trình trở nên chủ động, rõ ràng và thuận tiện hơn ngay trên một ứng dụng.
                         </p>
                         <div className="hero-cta">
                             <a href={apkDownloadHref} download="tripdriver.apk" className="btn btn-primary">
@@ -252,10 +250,16 @@ export default function TripDriverWeb() {
                     </div>
                     <div className="about-content">
                         <p className="about-intro reveal reveal-delay-1">
-                            TripDriver mang đến trải nghiệm thuê xe tự lái hiện đại, chuyên nghiệp và phù hợp với nhu cầu di chuyển linh hoạt.
+                            TripDriver mang đến trải nghiệm thuê xe tự lái hiện đại, chuyên nghiệp và phù hợp với nhu cầu di chuyển linh hoạt tại TPHCM.
                         </p>
                         <p className="about-text reveal reveal-delay-2">
-                            Chúng tôi xây dựng TripDriver để việc thuê xe trở nên dễ tiếp cận hơn với người dùng và hiệu quả hơn với đối tác. Từ khâu tìm kiếm, lựa chọn xe đến theo dõi yêu cầu thuê, mọi thứ đều được sắp xếp theo hướng rõ ràng và thuận tiện nhất.
+                            Chúng tôi xây dựng TripDriver để việc thuê xe tự lái giá rẻ trở nên dễ tiếp cận hơn với người dùng và hiệu quả hơn với đối tác. Từ khâu tìm kiếm, lựa chọn xe đến theo dõi yêu cầu thuê, mọi thứ đều được sắp xếp theo hướng rõ ràng và thuận tiện nhất.
+                        </p>
+                        <p className="about-text reveal reveal-delay-2">
+                            Nếu bạn đang tìm ứng dụng thuê xe tự lái tại TPHCM, nền tảng thuê xe tự lái giá rẻ ở TP.HCM hoặc muốn trải nghiệm TripDriver như một giải pháp thuê xe tự lái thuận tiện hơn, đây là nơi phù hợp để bắt đầu.
+                        </p>
+                        <p className="about-text reveal reveal-delay-2">
+                            TripDriver hướng tới việc trở thành nền tảng thuê xe tự lái nhanh chóng giá rẻ tại Thành phố Hồ Chí Minh, giúp người dùng dễ dàng tiếp cận xe phù hợp với nhu cầu di chuyển hằng ngày hoặc cho các chuyến đi ngắn và dài ngày.
                         </p>
                         <p className="about-text reveal reveal-delay-2">
                             Nền tảng của chúng tôi kết nối những chiếc xe nhàn rỗi với người cần di chuyển, tạo ra giá trị thực và một cộng đồng chia sẻ an toàn, đáng tin cậy.
@@ -463,7 +467,7 @@ export default function TripDriverWeb() {
                     <div className="contact-info reveal">
                         <h3>Tải ứng dụng</h3>
                         <p>
-                            Khám phá cách thuê xe tự lái thuận tiện hơn trên một nền tảng được thiết kế cho người dùng hiện đại và đối tác chuyên nghiệp.
+                            Khám phá cách thuê xe tự lái giá rẻ thuận tiện hơn trên một nền tảng được thiết kế cho người dùng hiện đại và đối tác chuyên nghiệp tại TPHCM.
                         </p>
                         <a href={`mailto:${contactEmail}`} className="contact-email">
                             {contactEmail}
@@ -491,7 +495,7 @@ export default function TripDriverWeb() {
                             <img src="/TripDriverLogo.jpg" alt="TripDriver" className="w-12 h-12 object-contain rounded-full" />
                             <h2 className="text-2xl font-playfair m-0 tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>TRIPDRIVER</h2>
                         </div>
-                        <p>Nền tảng kết nối người thuê xe và chủ xe cho trải nghiệm thuê xe tự lái rõ ràng, thuận tiện hơn.</p>
+                        <p>Nền tảng thuê xe tự lái giá rẻ ở TPHCM, kết nối người thuê xe và chủ xe cho trải nghiệm rõ ràng, thuận tiện hơn.</p>
                         <a href={`mailto:${contactEmail}`} className="footer-contact-email">{contactEmail}</a>
                     </div>
                     <div className="footer-links">
