@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { applySeo } from './seo';
 
 // Declaration to let TypeScript know about the custom iconify-icon element
 declare global {
@@ -21,7 +22,24 @@ export default function TripDriverWeb() {
 
     // Scroll Progress
     useEffect(() => {
-        document.title = 'TripDriver - Nền tảng thuê xe tự lái nhanh chóng giá rẻ tại Thành phố Hồ Chí Minh';
+        applySeo({
+            title: 'TripDriver - Ứng dụng thuê xe tự lái cho người mới tại Thành phố Hồ Chí Minh',
+            description: 'TripDriver là ứng dụng thuê xe tự lái cho người mới tại Thành phố Hồ Chí Minh, giúp người dùng tìm xe dễ hơn, xem thông tin rõ ràng hơn và bắt đầu hành trình thuận tiện hơn.',
+            canonical: 'https://tripdriver.vercel.app/',
+            schema: {
+                '@context': 'https://schema.org',
+                '@type': 'WebPage',
+                name: 'TripDriver - Ứng dụng thuê xe tự lái cho người mới tại Thành phố Hồ Chí Minh',
+                url: 'https://tripdriver.vercel.app/',
+                description: 'Trang giới thiệu TripDriver, ứng dụng thuê xe tự lái cho người mới tại Thành phố Hồ Chí Minh.',
+                about: {
+                    '@type': 'SoftwareApplication',
+                    name: 'TripDriver',
+                    applicationCategory: 'TravelApplication',
+                    operatingSystem: 'Android',
+                },
+            },
+        });
 
         const handleScroll = () => {
             const scrolled = window.scrollY;
@@ -179,16 +197,16 @@ export default function TripDriverWeb() {
                             <span className="hero-tag-line"></span>
                             <span className="hero-tag-text flex items-center gap-2">
                                 <iconify-icon icon="solar:routing-linear" className="text-lg"></iconify-icon>
-                                Nền tảng thuê xe tự lái
+                                Ứng dụng thuê xe tự lái cho người mới
                             </span>
                         </div>
                         <h1 className="hero-title">
-                            <span className="line"><span className="word">Thuê xe</span></span>
-                            <span className="line"><span className="word" style={{ animationDelay: '0.55s' }}>tự lái</span></span>
-                            <span className="line"><span className="word" style={{ animationDelay: '0.7s' }}><em>dễ dàng</em></span></span>
+                            <span className="line"><span className="word">Ứng dụng</span></span>
+                            <span className="line"><span className="word" style={{ animationDelay: '0.55s' }}>thuê xe tự lái</span></span>
+                            <span className="line"><span className="word" style={{ animationDelay: '0.7s' }}><em>cho người mới</em></span></span>
                         </h1>
                         <p className="hero-desc">
-                            TripDriver là nền tảng thuê xe tự lái giá rẻ ở TPHCM, kết nối người cần thuê xe với chủ xe cho thuê để hành trình trở nên chủ động, rõ ràng và thuận tiện hơn ngay trên một ứng dụng.
+                            TripDriver là ứng dụng thuê xe tự lái cho người mới tại Thành phố Hồ Chí Minh, giúp người dùng tìm xe thuận tiện hơn, hiểu quy trình dễ hơn và bắt đầu hành trình tự tin hơn ngay trên một nền tảng rõ ràng.
                         </p>
                         <div className="hero-cta">
                             <a href={apkDownloadHref} download="tripdriver.apk" className="btn btn-primary">
@@ -245,7 +263,7 @@ export default function TripDriverWeb() {
             <section className="about" id="nguoi-dung">
                 <div className="section-header reveal">
                     <div className="section-number">01</div>
-                    <h2 className="section-title">Giới thiệu <em>dịch vụ</em></h2>
+                    <h2 className="section-title">Thuê xe tự lái <em>cho người mới</em></h2>
                 </div>
                 <div className="about-grid">
                     <div className="about-image-wrapper reveal">
@@ -254,19 +272,22 @@ export default function TripDriverWeb() {
                     </div>
                     <div className="about-content">
                         <p className="about-intro reveal reveal-delay-1">
-                            TripDriver mang đến trải nghiệm thuê xe tự lái hiện đại, chuyên nghiệp và phù hợp với nhu cầu di chuyển linh hoạt tại TPHCM.
+                            TripDriver mang đến trải nghiệm thuê xe tự lái dễ hiểu hơn cho người mới bắt đầu tại Thành phố Hồ Chí Minh.
                         </p>
                         <p className="about-text reveal reveal-delay-2">
-                            Chúng tôi xây dựng TripDriver để việc thuê xe tự lái giá rẻ trở nên dễ tiếp cận hơn với người dùng và hiệu quả hơn với đối tác. Từ khâu tìm kiếm, lựa chọn xe đến theo dõi yêu cầu thuê, mọi thứ đều được sắp xếp theo hướng rõ ràng và thuận tiện nhất.
+                            Chúng tôi xây dựng TripDriver để việc thuê xe tự lái trở nên dễ tiếp cận hơn với người dùng mới và hiệu quả hơn với đối tác. Từ khâu tìm kiếm, lựa chọn xe đến theo dõi yêu cầu thuê, mọi thứ đều được sắp xếp theo hướng rõ ràng, thuận tiện và dễ làm quen.
                         </p>
                         <p className="about-text reveal reveal-delay-2">
-                            Nếu bạn đang tìm ứng dụng thuê xe tự lái tại TPHCM, nền tảng thuê xe tự lái giá rẻ ở TP.HCM hoặc muốn trải nghiệm TripDriver như một giải pháp thuê xe tự lái thuận tiện hơn, đây là nơi phù hợp để bắt đầu.
+                            Nếu bạn đang tìm ứng dụng thuê xe tự lái cho người mới tại Thành phố Hồ Chí Minh, TripDriver là lựa chọn phù hợp để bắt đầu với quy trình rõ ràng, thông tin minh bạch và trải nghiệm dễ theo dõi.
                         </p>
                         <p className="about-text reveal reveal-delay-2">
-                            TripDriver hướng tới việc trở thành nền tảng thuê xe tự lái nhanh chóng giá rẻ tại Thành phố Hồ Chí Minh, giúp người dùng dễ dàng tiếp cận xe phù hợp với nhu cầu di chuyển hằng ngày hoặc cho các chuyến đi ngắn và dài ngày.
+                            TripDriver hướng tới việc trở thành ứng dụng thuê xe tự lái thân thiện với người mới, giúp người dùng tại Thành phố Hồ Chí Minh dễ dàng tiếp cận chiếc xe phù hợp cho nhu cầu đi làm, đi gia đình hoặc đi công tác.
                         </p>
                         <p className="about-text reveal reveal-delay-2">
                             Nền tảng của chúng tôi kết nối những chiếc xe nhàn rỗi với người cần di chuyển, tạo ra giá trị thực và một cộng đồng chia sẻ an toàn, đáng tin cậy.
+                        </p>
+                        <p className="about-text reveal reveal-delay-2">
+                            Cần xem thêm hướng dẫn? Hãy đọc <a href="/faq-thue-xe-tu-lai" className="seo-inline-link">FAQ thuê xe tự lái cho người mới</a> để hiểu rõ hơn trước khi chọn xe.
                         </p>
                         <div className="stats-grid reveal reveal-delay-3">
                             <div className="stat-item">
@@ -469,9 +490,9 @@ export default function TripDriverWeb() {
                 </div>
                 <div className="contact-grid">
                     <div className="contact-info reveal">
-                        <h3>Tải ứng dụng</h3>
+                        <h3>Ứng dụng thuê xe tự lái cho người mới</h3>
                         <p>
-                            Khám phá cách thuê xe tự lái giá rẻ thuận tiện hơn trên một nền tảng được thiết kế cho người dùng hiện đại và đối tác chuyên nghiệp tại TPHCM.
+                            Khám phá cách thuê xe tự lái thuận tiện hơn trên một ứng dụng được thiết kế cho người mới tại Thành phố Hồ Chí Minh, với thông tin rõ ràng và trải nghiệm dễ làm quen.
                         </p>
                         <a href={`mailto:${contactEmail}`} className="contact-email">
                             {contactEmail}
@@ -515,8 +536,8 @@ export default function TripDriverWeb() {
                         <div className="footer-column">
                             <h4>Hỗ trợ</h4>
                             <ul>
-                                <li><a href="#">Trung tâm hỗ trợ</a></li>
-                                <li><a href="#">Câu hỏi thường gặp</a></li>
+                                <li><a href="/faq-thue-xe-tu-lai">FAQ thuê xe tự lái</a></li>
+                                <li><a href="/faq-thue-xe-tu-lai">Câu hỏi thường gặp</a></li>
                                 <li><a href="#">Điều khoản sử dụng</a></li>
                                 <li><a href="#">Chính sách bảo mật</a></li>
                             </ul>

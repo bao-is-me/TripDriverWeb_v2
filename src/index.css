@@ -773,6 +773,12 @@ section {
   margin-bottom: 3rem;
 }
 
+.seo-inline-link {
+  color: var(--black);
+  text-decoration: underline;
+  text-underline-offset: 0.18rem;
+}
+
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

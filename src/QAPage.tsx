@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { applySeo } from './seo';
 
 type QAItem = {
     question: string;
@@ -48,7 +49,23 @@ export default function QAPage() {
     const [menuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
-        document.title = 'FAQ Thuê Xe Tự Lái - TripDriver';
+        applySeo({
+            title: 'FAQ Thuê Xe Tự Lái Cho Người Mới Tại Thành Phố Hồ Chí Minh - TripDriver',
+            description: 'FAQ của TripDriver dành cho người đang tìm ứng dụng thuê xe tự lái cho người mới tại Thành phố Hồ Chí Minh, với giải đáp rõ ràng về cách chọn xe, quy trình thuê và trải nghiệm sử dụng.',
+            canonical: 'https://tripdriver.vercel.app/faq-thue-xe-tu-lai',
+            schema: {
+                '@context': 'https://schema.org',
+                '@type': 'FAQPage',
+                mainEntity: qaItems.map((item) => ({
+                    '@type': 'Question',
+                    name: item.question,
+                    acceptedAnswer: {
+                        '@type': 'Answer',
+                        text: item.answer,
+                    },
+                })),
+            },
+        });
         window.scrollTo({ top: 0, behavior: 'auto' });
     }, []);
 
@@ -92,9 +109,12 @@ export default function QAPage() {
                 <section className="qa-hero">
                     <div className="qa-hero-copy reveal active">
                         <div className="section-number">QA</div>
-                        <h1 className="qa-title">Hỗ trợ <em>thuê xe tự lái</em></h1>
+                        <h1 className="qa-title">FAQ cho <em>người mới thuê xe tự lái</em></h1>
                         <p className="qa-desc">
-                            Tổng hợp những câu hỏi thường gặp về nền tảng thuê xe tự lái, ứng dụng thuê xe tự lái, kinh nghiệm thuê xe tự lái giá rẻ và cách chọn xe phù hợp tại TPHCM.
+                            Tổng hợp những câu hỏi thường gặp dành cho người đang tìm ứng dụng thuê xe tự lái cho người mới tại Thành phố Hồ Chí Minh, từ cách chọn xe đến kinh nghiệm thuê xe rõ ràng và thuận tiện hơn.
+                        </p>
+                        <p className="qa-desc">
+                            Bạn có thể quay lại <a href="/" className="seo-inline-link">trang chủ TripDriver</a> để xem tổng quan nền tảng và tải ứng dụng khi đã sẵn sàng bắt đầu.
                         </p>
                     </div>
                 </section>
