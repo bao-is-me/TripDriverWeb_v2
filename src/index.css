@@ -1065,7 +1065,13 @@ section {
 /* Contact Section */
 .contact {
   background: var(--off-white);
-  padding-top: 8rem;
+  padding-top: 6rem;
+  padding-bottom: 8rem;
+}
+
+.contact .section-header {
+  max-width: 1280px;
+  margin: 0 auto 2.5rem;
 }
 
 .contact-grid {
@@ -1093,22 +1099,23 @@ section {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 640px;
+  max-width: 680px;
 }
 
 .contact-info h3 {
   font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
+  font-size: clamp(2.35rem, 4vw, 3.1rem);
   font-weight: 400;
   margin-bottom: 1.25rem;
   letter-spacing: -1px;
+  line-height: 1.2;
 }
 
 .contact-info p {
   color: var(--text-gray);
   font-size: 1.05rem;
   line-height: 1.8;
-  max-width: 42rem;
+  max-width: 36rem;
   margin-bottom: 2.25rem;
 }
 
@@ -1131,11 +1138,11 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 6rem;
+  padding-top: 1.5rem;
 }
 
 .contact-phone-frame {
-  width: min(100%, 360px);
+  width: min(100%, 400px);
   padding: 0;
   border-radius: 34px;
   background: transparent;
@@ -1147,7 +1154,7 @@ section {
   display: block;
   width: 100%;
   height: auto;
-  transform: scale(1.14);
+  transform: scale(1.08);
   transform-origin: center;
 }
 
@@ -1497,7 +1504,7 @@ footer {
 
   .contact-grid {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.5rem;
     max-width: 760px;
   }
 
@@ -1698,11 +1705,11 @@ footer {
   }
 
   .contact-phone-frame {
-    width: min(100%, 320px);
+    width: min(100%, 340px);
   }
 
   .contact-phone-image {
-    transform: scale(1.1);
+    transform: scale(1.06);
   }
 }
 
