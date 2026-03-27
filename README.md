@@ -1,95 +1,177 @@
-# 🚗 TripDriver – Self-Drive Car Rental Platform
+# TripDriverWeb
 
-TripDriver là nền tảng kết nối **người cần thuê xe tự lái** với **chủ xe muốn cho thuê**, giúp việc tìm kiếm xe và quản lý quá trình thuê trở nên **dễ dàng, minh bạch và thuận tiện hơn**.
+Website giới thiệu nền tảng **TripDriver** dành cho dịch vụ **thuê xe tự lái**.  
+Project hiện gồm:
 
-Website trong repository này là **Landing Page giới thiệu dịch vụ TripDriver**, giúp người dùng hiểu về nền tảng, quyền lợi khi sử dụng và cách tham gia hệ sinh thái TripDriver.
+- Trang chủ `/`
+- Trang FAQ `/faq-thue-xe-tu-lai`
+- CTA tải file APK trực tiếp
+- SEO on-page cơ bản cho homepage và FAQ
 
+Repository này được xây dựng bằng **React + Vite** và đang được tối ưu theo hướng landing page dễ đọc, dễ triển khai và thuận tiện để tiếp tục phát triển.
 
----
+## Mục tiêu project
 
-# ✨ Features
+TripDriver là nền tảng kết nối:
 
-Landing page bao gồm các phần chính:
+- Người dùng cần thuê xe tự lái
+- Chủ xe muốn cho thuê phương tiện
 
-### 🚀 Hero Section
-- Giới thiệu nền tảng TripDriver
-- CTA tải ứng dụng
-- Preview trải nghiệm ứng dụng
+Website này tập trung vào:
 
-### 👤 Dành cho người dùng
-- Tìm xe phù hợp với nhu cầu
-- Xem thông tin xe rõ ràng
-- Gửi yêu cầu thuê dễ dàng
-- Theo dõi trạng thái đơn thuê
+- Giới thiệu giá trị dịch vụ
+- Trình bày lợi ích cho người dùng và đối tác
+- Hỗ trợ tải ứng dụng
+- Cung cấp nội dung FAQ phục vụ người dùng mới
+- Tối ưu hiển thị tìm kiếm theo từ khóa thương hiệu và non-brand
 
-### 🤝 Dành cho đối tác
-- Đăng xe lên nền tảng
-- Tiếp nhận yêu cầu thuê
-- Quản lý quá trình cho thuê
+## Các trang hiện có
 
-### 🔒 An toàn & Tin cậy
-- Trải nghiệm minh bạch
-- Quy trình rõ ràng
-- Kết nối hiệu quả giữa người thuê và chủ xe
+### 1. Homepage
 
-### 📱 Tải ứng dụng
-- App Store
-- Google Play
+Đường dẫn: `/`
 
----
+Nội dung chính:
 
-# 🖥️ UI Sections
-
-Trang web gồm các phần:
-
-- Header Navigation
-- Hero Section
-- Service Introduction
-- User Benefits
-- Partner Benefits
-- App Features
-- Safety & Trust
-- Download App CTA
+- Hero section giới thiệu TripDriver
+- Giới thiệu dịch vụ
+- Đối tượng sử dụng
+- Giá trị cốt lõi
+- Cách hoạt động
+- Khu vực tải ứng dụng
 - Footer
 
----
+### 2. FAQ page
 
-# 🛠 Tech Stack
+Đường dẫn: `/faq-thue-xe-tu-lai`
 
-Project được xây dựng bằng:
+Nội dung chính:
 
-- **React**
-- **Vite**
-- **TailwindCSS**
-- **Framer Motion**
-- **Lucide Icons**
+- Câu hỏi thường gặp cho người mới thuê xe tự lái
+- Nội dung tối ưu cho SEO FAQ
+- Internal link quay về homepage
 
----
+## Tính năng hiện tại
 
-# 🎯 Project Purpose
+- Giao diện landing page responsive cho desktop và mobile
+- Hiệu ứng scroll reveal, progress line, carousel đơn giản
+- Khu vực tải ứng dụng bằng file APK nội bộ
+- FAQ page riêng với route `/faq-thue-xe-tu-lai`
+- SEO dynamic cho homepage và FAQ thông qua `src/seo.ts`
+- `robots.txt` và `sitemap.txt` phục vụ index cơ bản
+- Tệp xác minh Google Search Console trong `public/`
 
-Project này được xây dựng cho mục đích:
+## SEO hiện có
 
-- Demo nền tảng **TripDriver**
-- Landing page giới thiệu dịch vụ
-- Đồ án phát triển phần mềm
-- Thực hành React + Vite + Tailwind
+Project đang có các thành phần SEO on-page sau:
 
----
+- `title`
+- `meta description`
+- `canonical`
+- Open Graph
+- Twitter meta
+- Structured data theo từng trang
+- Internal link giữa homepage và FAQ
 
-# 📈 Future Improvements
+Định hướng SEO hiện tại:
 
-Các cải tiến có thể phát triển thêm:
+- Giữ nhận diện thương hiệu `TripDriver`
+- Đồng thời hỗ trợ các truy vấn non-brand liên quan đến:
+  - ứng dụng thuê xe tự lái
+  - thuê xe tự lái cho người mới
+  - thuê xe tự lái tại Thành phố Hồ Chí Minh
 
-- SEO optimization
-- Deploy production
-- Tích hợp API backend
-- Tích hợp đăng ký đối tác
-- Dashboard quản lý xe
-- Mobile app integration
+## Tech stack
 
----
+- React 19
+- Vite 7
+- Tailwind CSS 4
+- CSS custom
+- ESLint
 
-# 📄 License
+## Cấu trúc thư mục chính
 
-Project này được phát triển cho mục đích học tập và nghiên cứu.
+```txt
+src/
+  App.jsx
+  TripDriverWeb.tsx
+  QAPage.tsx
+  seo.ts
+  index.css
+  main.jsx
+
+public/
+  TripDriverLogo.jpg
+  PhonePic.png
+  tripdriver.apk
+  robots.txt
+  sitemap.txt
+  googlea513ed28dedce9d4.html
+  google88caaf6c07f99724.html
+
+index.html
+vercel.json
+```
+
+## Cài đặt và chạy local
+
+### Cài dependency
+
+```bash
+npm install
+```
+
+### Chạy môi trường development
+
+```bash
+npm run dev
+```
+
+### Build production
+
+```bash
+npm run build
+```
+
+### Preview bản build
+
+```bash
+npm run preview
+```
+
+## Deploy
+
+Project đang phù hợp để deploy trên **Vercel**.
+
+`vercel.json` đã có rewrite cho route:
+
+- `/faq-thue-xe-tu-lai`
+
+Điều này giúp mở trực tiếp trang FAQ không bị lỗi 404 sau deploy.
+
+## Static files quan trọng
+
+- APK tải xuống: [public/tripdriver.apk](public/tripdriver.apk)
+- Logo: [public/TripDriverLogo.jpg](public/TripDriverLogo.jpg)
+- Ảnh điện thoại section 05: [public/PhonePic.png](public/PhonePic.png)
+- Sitemap: [public/sitemap.txt](public/sitemap.txt)
+- Robots: [public/robots.txt](public/robots.txt)
+
+## Ghi chú
+
+- `sitemap` hiện đang dùng định dạng `.txt` theo cấu hình cũ đã hoạt động ổn định
+- FAQ page được render trong cùng app, nhưng có SEO riêng theo route
+- Nội dung website đang được viết ưu tiên tiếng Việt
+
+## Hướng phát triển tiếp theo
+
+- Thêm accordion cho FAQ page
+- Tối ưu sâu hơn SEO technical cho từng route
+- Thêm analytics/search console tracking rõ ràng hơn
+- Tích hợp backend hoặc form liên hệ thật
+- Mở rộng nội dung landing page cho nhiều thành phố hoặc nhóm nhu cầu thuê xe
+
+## Tác giả / liên hệ
+
+- Thương hiệu: **TripDriver**
+- Email: `tripdriver201@gmail.com`
