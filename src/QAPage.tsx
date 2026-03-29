@@ -51,7 +51,7 @@ export default function QAPage() {
         applySeo({
             title: 'FAQ Thuê Xe Tự Lái Cho Người Mới Tại Thành Phố Hồ Chí Minh - TripDriver',
             description: 'FAQ của TripDriver dành cho người đang tìm ứng dụng thuê xe tự lái cho người mới tại Thành phố Hồ Chí Minh, với giải đáp rõ ràng về cách chọn xe, quy trình thuê và trải nghiệm sử dụng.',
-            canonical: 'https://tripdriver.vercel.app/faq-thue-xe-tu-lai',
+            canonical: 'https://www.tripdriver.io.vn/faq-thue-xe-tu-lai',
             schema: {
                 '@context': 'https://schema.org',
                 '@type': 'FAQPage',

@@ -26,12 +26,12 @@ export default function TripDriverWeb() {
             title: 'TripDriver - Ứng dụng thuê xe tự lái cho người mới tại Thành phố Hồ Chí Minh',
             description:
                 'TripDriver là ứng dụng thuê xe tự lái cho người mới tại Thành phố Hồ Chí Minh, giúp người dùng tìm xe thuận tiện hơn, hiểu quy trình rõ ràng hơn và bắt đầu hành trình tự tin hơn.',
-            canonical: 'https://tripdriver.vercel.app/',
+            canonical: 'https://www.tripdriver.io.vn/',
             schema: {
                 '@context': 'https://schema.org',
                 '@type': 'WebPage',
                 name: 'TripDriver - Ứng dụng thuê xe tự lái cho người mới tại Thành phố Hồ Chí Minh',
-                url: 'https://tripdriver.vercel.app/',
+                url: 'https://www.tripdriver.io.vn/',
                 description:
                     'Trang giới thiệu TripDriver, ứng dụng thuê xe tự lái cho người mới tại Thành phố Hồ Chí Minh.',
                 about: {

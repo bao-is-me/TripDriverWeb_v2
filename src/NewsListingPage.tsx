@@ -9,12 +9,12 @@ export default function NewsListingPage() {
             title: 'Tin tức thuê xe tự lái và kinh nghiệm di chuyển | TripDriver',
             description:
                 'Cập nhật các bài viết, kinh nghiệm và lưu ý hữu ích về thuê xe tự lái, thủ tục thuê xe, cách chọn xe và những thông tin cần biết cho hành trình chủ động hơn.',
-            canonical: 'https://tripdriver.vercel.app/tin-tuc',
+            canonical: 'https://www.tripdriver.io.vn/tin-tuc',
             schema: {
                 '@context': 'https://schema.org',
                 '@type': 'CollectionPage',
                 name: 'Tin tức thuê xe tự lái và kinh nghiệm di chuyển',
-                url: 'https://tripdriver.vercel.app/tin-tuc',
+                url: 'https://www.tripdriver.io.vn/tin-tuc',
                 description:
                     'Trang tổng hợp toàn bộ bài viết tin tức, kinh nghiệm và lưu ý hữu ích về thuê xe tự lái trên TripDriver.',
             },

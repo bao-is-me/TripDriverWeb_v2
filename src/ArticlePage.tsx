@@ -12,7 +12,7 @@ export default function ArticlePage({ article }: ArticlePageProps) {
         applySeo({
             title: article.metaTitle,
             description: article.metaDescription,
-            canonical: `https://tripdriver.vercel.app${article.slug}`,
+            canonical: `https://www.tripdriver.io.vn${article.slug}`,
             schema: {
                 '@context': 'https://schema.org',
                 '@type': 'Article',
@@ -20,7 +20,7 @@ export default function ArticlePage({ article }: ArticlePageProps) {
                 description: article.metaDescription,
                 datePublished: article.publishedAt,
                 dateModified: article.publishedAt,
-                mainEntityOfPage: `https://tripdriver.vercel.app${article.slug}`,
+                mainEntityOfPage: `https://www.tripdriver.io.vn${article.slug}`,
                 image: [article.thumbnail],
                 author: {
                     '@type': 'Organization',
@@ -31,7 +31,7 @@ export default function ArticlePage({ article }: ArticlePageProps) {
                     name: 'TripDriver',
                     logo: {
                         '@type': 'ImageObject',
-                        url: 'https://tripdriver.vercel.app/TripDriverLogo.jpg',
+                        url: 'https://www.tripdriver.io.vn/TripDriverLogo.jpg',
                     },
                 },
             },
