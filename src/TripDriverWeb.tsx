@@ -1,11 +1,15 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import NewsSection from './NewsSection';
+import SiteHeader from './SiteHeader';
 import { applySeo } from './seo';
 
-// Declaration to let TypeScript know about the custom iconify-icon element
 declare global {
     namespace JSX {
         interface IntrinsicElements {
-            'iconify-icon': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & { icon: string;[key: string]: any };
+            'iconify-icon': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+                icon: string;
+                [key: string]: any;
+            };
         }
     }
 }
@@ -14,24 +18,22 @@ export default function TripDriverWeb() {
     const apkDownloadHref = '/tripdriver.apk';
     const contactEmail = 'tripdriver201@gmail.com';
     const [scrollProgress, setScrollProgress] = useState(0);
-    const [menuOpen, setMenuOpen] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
-
-    // Refs for tracking
     const projectsScrollRef = useRef<HTMLDivElement>(null);
 
-    // Scroll Progress
     useEffect(() => {
         applySeo({
             title: 'TripDriver - Ứng dụng thuê xe tự lái cho người mới tại Thành phố Hồ Chí Minh',
-            description: 'TripDriver là ứng dụng thuê xe tự lái cho người mới tại Thành phố Hồ Chí Minh, giúp người dùng tìm xe dễ hơn, xem thông tin rõ ràng hơn và bắt đầu hành trình thuận tiện hơn.',
+            description:
+                'TripDriver là ứng dụng thuê xe tự lái cho người mới tại Thành phố Hồ Chí Minh, giúp người dùng tìm xe thuận tiện hơn, hiểu quy trình rõ ràng hơn và bắt đầu hành trình tự tin hơn.',
             canonical: 'https://tripdriver.vercel.app/',
             schema: {
                 '@context': 'https://schema.org',
                 '@type': 'WebPage',
                 name: 'TripDriver - Ứng dụng thuê xe tự lái cho người mới tại Thành phố Hồ Chí Minh',
                 url: 'https://tripdriver.vercel.app/',
-                description: 'Trang giới thiệu TripDriver, ứng dụng thuê xe tự lái cho người mới tại Thành phố Hồ Chí Minh.',
+                description:
+                    'Trang giới thiệu TripDriver, ứng dụng thuê xe tự lái cho người mới tại Thành phố Hồ Chí Minh.',
                 about: {
                     '@type': 'SoftwareApplication',
                     name: 'TripDriver',
@@ -44,7 +46,7 @@ export default function TripDriverWeb() {
         const handleScroll = () => {
             const scrolled = window.scrollY;
             const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = scrolled / maxScroll;
+            const progress = maxScroll > 0 ? scrolled / maxScroll : 0;
             setScrollProgress(progress);
         };
 
@@ -52,7 +54,6 @@ export default function TripDriverWeb() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Reveal Animations
     useEffect(() => {
         const reveals = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver(
@@ -66,30 +67,29 @@ export default function TripDriverWeb() {
             { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
         );
 
-        reveals.forEach((el) => revealObserver.observe(el));
+        reveals.forEach((element) => revealObserver.observe(element));
         return () => revealObserver.disconnect();
     }, []);
 
-    // Testimonial Carousel Auto-advance
     useEffect(() => {
         const slideInterval = setInterval(() => {
             setCurrentSlide((prev) => (prev + 1) % 3);
         }, 6000);
+
         return () => clearInterval(slideInterval);
     }, []);
 
-    // Horizontal Scroll with drag
     useEffect(() => {
         const projectsScroll = projectsScrollRef.current;
         if (!projectsScroll) return;
 
         let isDown = false;
-        let startX: number;
-        let scrollLeft: number;
+        let startX = 0;
+        let scrollLeft = 0;
 
-        const handleMouseDown = (e: MouseEvent) => {
+        const handleMouseDown = (event: MouseEvent) => {
             isDown = true;
-            startX = e.pageX - projectsScroll.offsetLeft;
+            startX = event.pageX - projectsScroll.offsetLeft;
             scrollLeft = projectsScroll.scrollLeft;
         };
 
@@ -101,10 +101,10 @@ export default function TripDriverWeb() {
             isDown = false;
         };
 
-        const handleMouseMove = (e: MouseEvent) => {
+        const handleMouseMove = (event: MouseEvent) => {
             if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - projectsScroll.offsetLeft;
+            event.preventDefault();
+            const x = event.pageX - projectsScroll.offsetLeft;
             const walk = (x - startX) * 2;
             projectsScroll.scrollLeft = scrollLeft - walk;
         };
@@ -122,70 +122,25 @@ export default function TripDriverWeb() {
         };
     }, []);
 
-    const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
-        e.preventDefault();
-        if (menuOpen) setMenuOpen(false);
-
+    const handleSmoothScroll = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
+        event.preventDefault();
         const target = document.querySelector(href);
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     };
 
     return (
         <>
-            {/* Page Transition */}
             <div className="page-transition"></div>
 
-            {/* Scroll Progress */}
             <div className="scroll-line">
-                <div
-                    className="scroll-progress"
-                    style={{ transform: `scaleX(${scrollProgress})` }}
-                ></div>
-            </div>
-            <div className="logo-fixed">
-                <img src="/TripDriverLogo.jpg" alt="TripDriver" />
+                <div className="scroll-progress" style={{ transform: `scaleX(${scrollProgress})` }}></div>
             </div>
 
-            <nav className="blended-nav">
-                <a href="#home" className="logo flex items-center gap-3" onClick={(e) => handleSmoothScroll(e, '#home')}>
-                    <img
-                        src="/TripDriverLogo.jpg"
-                        alt="TripDriver"
-                        className="w-[48px] h-[48px] object-cover rounded-full flex-shrink-0"
-                    />
-                    <span className="logo-text">TRIPDRIVER</span>
-                </a>
+            <SiteHeader currentPath="/" />
 
-                <ul className="nav-links">
-                    <li><a href="#nguoi-dung" onClick={(e) => handleSmoothScroll(e, '#nguoi-dung')}>Người dùng</a></li>
-                    <li><a href="#doi-tac" onClick={(e) => handleSmoothScroll(e, '#doi-tac')}>Đối tác</a></li>
-                    <li><a href="#ve-tripdriver" onClick={(e) => handleSmoothScroll(e, '#ve-tripdriver')}>Về TripDriver</a></li>
-                    <li><a href="/faq-thue-xe-tu-lai">Hỏi đáp</a></li>
-                </ul>
-
-                <button className="menu-btn pointer-events-auto" aria-label="Menu" onClick={() => setMenuOpen(!menuOpen)}>
-                    <span style={{ transform: menuOpen ? 'rotate(45deg) translate(4px, 4px)' : '' }}></span>
-                    <span style={{ transform: menuOpen ? 'rotate(-45deg) translate(4px, -4px)' : '' }}></span>
-                </button>
-            </nav>
-
-            {/* Mobile Menu */}
-            <div className={`mobile-menu ${menuOpen ? 'active' : ''}`}>
-                <a href="#nguoi-dung" onClick={(e) => handleSmoothScroll(e, '#nguoi-dung')}>Người dùng</a>
-                <a href="#doi-tac" onClick={(e) => handleSmoothScroll(e, '#doi-tac')}>Đối tác</a>
-                <a href="#ve-tripdriver" onClick={(e) => handleSmoothScroll(e, '#ve-tripdriver')}>Về TripDriver</a>
-                <a href="#an-toan" onClick={(e) => handleSmoothScroll(e, '#an-toan')}>An toàn &amp; Tin cậy</a>
-                <a href="/faq-thue-xe-tu-lai" onClick={() => setMenuOpen(false)}>Hỏi đáp</a>
-            </div>
-
-            {/* Hero Section */}
             <section className="hero" id="home">
-                {/* Background Effects */}
                 <div className="hero-orb hero-orb-1"></div>
                 <div className="hero-orb hero-orb-2"></div>
                 <div className="hero-orb hero-orb-3"></div>
@@ -206,20 +161,26 @@ export default function TripDriverWeb() {
                             <span className="line"><span className="word" style={{ animationDelay: '0.7s' }}><em>cho người mới</em></span></span>
                         </h1>
                         <p className="hero-desc">
-                            TripDriver là ứng dụng thuê xe tự lái cho người mới tại Thành phố Hồ Chí Minh, giúp người dùng tìm xe thuận tiện hơn, hiểu quy trình dễ hơn và bắt đầu hành trình tự tin hơn ngay trên một nền tảng rõ ràng.
+                            TripDriver là ứng dụng thuê xe tự lái cho người mới tại Thành phố Hồ Chí Minh, giúp người dùng tìm xe thuận tiện hơn, hiểu quy trình rõ ràng hơn và bắt đầu hành trình tự tin hơn trên một nền tảng dễ làm quen.
                         </p>
                         <div className="hero-cta">
                             <a href={apkDownloadHref} download="tripdriver.apk" className="btn btn-primary">
                                 <iconify-icon icon="solar:download-linear" className="text-lg"></iconify-icon>
                                 <span>Tải ứng dụng</span>
                             </a>
-                            <a href="#nguoi-dung" onClick={(e) => handleSmoothScroll(e, '#nguoi-dung')} className="btn btn-secondary">Khám phá ngay</a>
+                            <a href="#nguoi-dung" onClick={(event) => handleSmoothScroll(event, '#nguoi-dung')} className="btn btn-secondary">
+                                Khám phá ngay
+                            </a>
                         </div>
                     </div>
 
                     <div className="hero-visual">
                         <div className="hero-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80" alt="Xe tự lái" className="hero-image object-cover bg-center" />
+                            <img
+                                src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80"
+                                alt="Xe tự lái"
+                                className="hero-image object-cover bg-center"
+                            />
                             <div className="hero-image-frame"></div>
                         </div>
                         <div className="hero-badge pointer-events-none">
@@ -243,7 +204,6 @@ export default function TripDriverWeb() {
                 </div>
             </section>
 
-            {/* Marquee */}
             <div className="marquee">
                 <div className="marquee-content">
                     <span className="marquee-item">Thuê Xe <span>·</span></span>
@@ -258,8 +218,6 @@ export default function TripDriverWeb() {
                     <span className="marquee-item">Minh Bạch <span>·</span></span>
                 </div>
             </div>
-
-            {/* About Section */}
             <section className="about" id="nguoi-dung">
                 <div className="section-header reveal">
                     <div className="section-number">01</div>
@@ -267,7 +225,11 @@ export default function TripDriverWeb() {
                 </div>
                 <div className="about-grid">
                     <div className="about-image-wrapper reveal">
-                        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80" alt="Hành trình" className="about-image object-cover bg-center" />
+                        <img
+                            src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80"
+                            alt="Hành trình tự lái"
+                            className="about-image object-cover bg-center"
+                        />
                         <div className="about-image-border"></div>
                     </div>
                     <div className="about-content">
@@ -306,8 +268,6 @@ export default function TripDriverWeb() {
                     </div>
                 </div>
             </section>
-
-            {/* Projects Section */}
             <section className="projects" id="doi-tac">
                 <div className="projects-header">
                     <div className="section-header reveal !mb-0">
@@ -319,9 +279,13 @@ export default function TripDriverWeb() {
                     <div className="projects-track">
                         <article className="project-card reveal">
                             <div className="project-image-wrapper">
-                                <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80" alt="Người dùng" className="project-image object-cover w-full h-auto" />
+                                <img
+                                    src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80"
+                                    alt="Người dùng"
+                                    className="project-image object-cover w-full h-auto"
+                                />
                                 <div className="project-overlay">
-                                    <a href="#ho-tro" onClick={(e) => handleSmoothScroll(e, '#ho-tro')} className="project-link">Khám phá ngay</a>
+                                    <a href="#ho-tro" onClick={(event) => handleSmoothScroll(event, '#ho-tro')} className="project-link">Khám phá ngay</a>
                                 </div>
                             </div>
                             <div className="project-info">
@@ -333,9 +297,13 @@ export default function TripDriverWeb() {
                         </article>
                         <article className="project-card reveal reveal-delay-1">
                             <div className="project-image-wrapper">
-                                <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=800&q=80" alt="Đối tác" className="project-image object-cover w-full h-auto" />
+                                <img
+                                    src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=800&q=80"
+                                    alt="Đối tác"
+                                    className="project-image object-cover w-full h-auto"
+                                />
                                 <div className="project-overlay">
-                                    <a href="#ho-tro" onClick={(e) => handleSmoothScroll(e, '#ho-tro')} className="project-link">Khám phá ngay</a>
+                                    <a href="#ho-tro" onClick={(event) => handleSmoothScroll(event, '#ho-tro')} className="project-link">Khám phá ngay</a>
                                 </div>
                             </div>
                             <div className="project-info">
@@ -347,9 +315,13 @@ export default function TripDriverWeb() {
                         </article>
                         <article className="project-card reveal reveal-delay-2">
                             <div className="project-image-wrapper">
-                                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80" alt="Ứng dụng" className="project-image object-cover w-full h-auto" />
+                                <img
+                                    src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80"
+                                    alt="Về ứng dụng"
+                                    className="project-image object-cover w-full h-auto"
+                                />
                                 <div className="project-overlay">
-                                    <a href="#ve-tripdriver" onClick={(e) => handleSmoothScroll(e, '#ve-tripdriver')} className="project-link">Khám phá ngay</a>
+                                    <a href="#ve-tripdriver" onClick={(event) => handleSmoothScroll(event, '#ve-tripdriver')} className="project-link">Khám phá ngay</a>
                                 </div>
                             </div>
                             <div className="project-info">
@@ -366,8 +338,6 @@ export default function TripDriverWeb() {
                     <span>Kéo để xem thêm</span>
                 </div>
             </section>
-
-            {/* Services Section */}
             <section className="services" id="ve-tripdriver">
                 <div className="section-header reveal">
                     <div className="section-number">03</div>
@@ -430,8 +400,6 @@ export default function TripDriverWeb() {
                     </div>
                 </div>
             </section>
-
-            {/* Testimonials Section */}
             <section className="testimonials" id="an-toan">
                 <div className="section-header reveal">
                     <div className="section-number">04</div>
@@ -439,12 +407,11 @@ export default function TripDriverWeb() {
                 </div>
                 <div className="testimonial-wrapper reveal">
                     <div className="testimonial-track">
-                        <div
-                            className="testimonial-slides"
-                            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                        >
+                        <div className="testimonial-slides" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
                             <div className="testimonial-slide flex flex-col items-center gap-8">
-                                <h3 className="text-3xl font-playfair mb-10 text-[var(--dark-gray)] text-center" style={{ fontFamily: "'Playfair Display', serif" }}>Cho người dùng</h3>
+                                <h3 className="text-3xl font-playfair mb-10 text-[var(--dark-gray)] text-center" style={{ fontFamily: "'Lora', serif" }}>
+                                    Cho người dùng
+                                </h3>
                                 <ul className="flex flex-col gap-6 text-left max-w-sm mx-auto text-[var(--text-gray)]">
                                     <li className="flex items-center gap-5 text-lg"><span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--black)] text-sm font-semibold text-white">1</span> Tìm xe phù hợp với nhu cầu</li>
                                     <li className="flex items-center gap-5 text-lg"><span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--black)] text-sm font-semibold text-white">2</span> Gửi yêu cầu thuê nhanh chóng</li>
@@ -452,7 +419,9 @@ export default function TripDriverWeb() {
                                 </ul>
                             </div>
                             <div className="testimonial-slide flex flex-col items-center gap-8">
-                                <h3 className="text-3xl font-playfair mb-10 text-[var(--dark-gray)] text-center" style={{ fontFamily: "'Playfair Display', serif" }}>Cho đối tác</h3>
+                                <h3 className="text-3xl font-playfair mb-10 text-[var(--dark-gray)] text-center" style={{ fontFamily: "'Lora', serif" }}>
+                                    Cho đối tác
+                                </h3>
                                 <ul className="flex flex-col gap-6 text-left max-w-sm mx-auto text-[var(--text-gray)]">
                                     <li className="flex items-center gap-5 text-lg"><span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--black)] text-sm font-semibold text-white">1</span> Đăng thông tin xe lên nền tảng</li>
                                     <li className="flex items-center gap-5 text-lg"><span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--black)] text-sm font-semibold text-white">2</span> Tiếp nhận yêu cầu từ khách thuê</li>
@@ -460,8 +429,9 @@ export default function TripDriverWeb() {
                                 </ul>
                             </div>
                             <div className="testimonial-slide flex flex-col items-center gap-8">
-                                <h3 className="text-3xl font-playfair mb-10 text-[var(--dark-gray)] text-center" style={{ fontFamily: "'Playfair Display', serif" }}>An toàn &amp; Tin cậy</h3>
-
+                                <h3 className="text-3xl font-playfair mb-10 text-[var(--dark-gray)] text-center" style={{ fontFamily: "'Lora', serif" }}>
+                                    An toàn &amp; Tin cậy
+                                </h3>
                                 <ul className="flex flex-col gap-6 text-left max-w-[36rem] mx-auto text-[var(--text-gray)]">
                                     <li className="flex items-center gap-4 text-[1.05rem]"><iconify-icon icon="solar:shield-check-linear" className="text-2xl text-[var(--black)] shrink-0"></iconify-icon> Trải nghiệm rõ ràng minh bạch</li>
                                     <li className="flex items-center gap-4 text-[1.05rem]"><iconify-icon icon="solar:shield-check-linear" className="text-2xl text-[var(--black)] shrink-0"></iconify-icon> Quy trình kiểm duyệt và dễ theo dõi</li>
@@ -481,65 +451,60 @@ export default function TripDriverWeb() {
                     </div>
                 </div>
             </section>
+            <NewsSection />
 
-            {/* Contact Section */}
             <section className="contact" id="ho-tro">
-                <div className="section-header reveal">
-                    <div className="section-number">05</div>
-                    <h2 className="section-title">Bắt đầu <em>ngay</em></h2>
-                </div>
                 <div className="contact-grid">
-                    <div className="contact-info reveal">
-                        <h3>Ứng dụng thuê xe tự lái cho người mới</h3>
-                        <p>
-                            Khám phá cách thuê xe tự lái thuận tiện hơn trên một ứng dụng được thiết kế cho người mới tại Thành phố Hồ Chí Minh, với thông tin rõ ràng và trải nghiệm dễ làm quen.
-                        </p>
-                        <a href={`mailto:${contactEmail}`} className="contact-email">
-                            {contactEmail}
-                        </a>
-                        <div className="download-actions flex flex-wrap gap-4 mt-8">
-                            <a href={apkDownloadHref} download="tripdriver.apk" className="btn btn-primary">
-                                <iconify-icon icon="solar:download-linear" className="text-lg"></iconify-icon>
-                                <span>Tải ứng dụng</span>
-                            </a>
+                    <div className="contact-copy">
+                        <div className="section-header reveal contact-header">
+                            <div className="section-number">06</div>
+                            <h2 className="section-title">Bắt đầu <em>ngay</em></h2>
+                        </div>
+                        <div className="contact-info reveal reveal-delay-1">
+                            <h3>Ứng dụng thuê xe tự lái cho người mới</h3>
+                            <p>
+                                Khám phá cách thuê xe tự lái thuận tiện hơn trên một ứng dụng được thiết kế cho người mới tại Thành phố Hồ Chí Minh, với thông tin rõ ràng và trải nghiệm dễ làm quen.
+                            </p>
+                            <a href={`mailto:${contactEmail}`} className="contact-email">{contactEmail}</a>
+                            <div className="download-actions flex flex-wrap gap-4 mt-8">
+                                <a href={apkDownloadHref} download="tripdriver.apk" className="btn btn-primary">
+                                    <iconify-icon icon="solar:download-linear" className="text-lg"></iconify-icon>
+                                    <span>Tải ứng dụng</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <div className="contact-visual reveal reveal-delay-1">
+                    <div className="contact-visual reveal reveal-delay-2">
                         <div className="contact-phone-frame">
                             <img src="/PhonePic.png" alt="Giao diện ứng dụng TripDriver" className="contact-phone-image" />
                         </div>
                     </div>
                 </div>
             </section>
-
-            {/* Footer */}
             <footer>
                 <div className="footer-top">
                     <div className="footer-brand flex flex-col gap-4 max-w-xs">
                         <div className="flex items-center gap-3">
                             <img src="/TripDriverLogo.jpg" alt="TripDriver" className="w-12 h-12 object-contain rounded-full" />
-                            <h2 className="text-2xl font-playfair m-0 tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>TRIPDRIVER</h2>
+                            <h2 className="text-2xl font-playfair m-0 tracking-tight" style={{ fontFamily: "'Lora', serif" }}>TRIPDRIVER</h2>
                         </div>
-                        <p>Nền tảng thuê xe tự lái giá rẻ ở TPHCM, kết nối người thuê xe và chủ xe cho trải nghiệm rõ ràng, thuận tiện hơn.</p>
+                        <p>Nền tảng thuê xe tự lái cho người mới tại Thành phố Hồ Chí Minh, giúp người dùng tiếp cận hành trình rõ ràng và thuận tiện hơn.</p>
                         <a href={`mailto:${contactEmail}`} className="footer-contact-email">{contactEmail}</a>
                     </div>
                     <div className="footer-links">
                         <div className="footer-column">
                             <h4>Khám phá</h4>
                             <ul>
-                                <li><a href="#ve-tripdriver" onClick={(e) => handleSmoothScroll(e, '#ve-tripdriver')}>Về TripDriver</a></li>
-                                <li><a href="#nguoi-dung" onClick={(e) => handleSmoothScroll(e, '#nguoi-dung')}>Người dùng</a></li>
-                                <li><a href="#doi-tac" onClick={(e) => handleSmoothScroll(e, '#doi-tac')}>Đối tác</a></li>
-                                <li><a href="#ho-tro" onClick={(e) => handleSmoothScroll(e, '#ho-tro')}>Tải ứng dụng</a></li>
+                                <li><a href="/">Trang chủ</a></li>
+                                <li><a href="/tin-tuc">Tin tức</a></li>
+                                <li><a href="/#ho-tro">Tải ứng dụng</a></li>
                             </ul>
                         </div>
                         <div className="footer-column">
                             <h4>Hỗ trợ</h4>
                             <ul>
-                                <li><a href="/faq-thue-xe-tu-lai">FAQ thuê xe tự lái</a></li>
                                 <li><a href="/faq-thue-xe-tu-lai">Câu hỏi thường gặp</a></li>
-                                <li><a href="#">Điều khoản sử dụng</a></li>
-                                <li><a href="#">Chính sách bảo mật</a></li>
+                                <li><a href="/faq-thue-xe-tu-lai">Thông tin thuê xe</a></li>
                             </ul>
                         </div>
                         <div className="footer-column">
@@ -552,13 +517,10 @@ export default function TripDriverWeb() {
                 </div>
                 <div className="footer-bottom">
                     <p className="footer-copy">© 2026 TripDriver. All rights reserved.</p>
-                    <div className="social-links">
-                        {/*<a href="https://www.facebook.com/profile.php?id=61587796650900">Fb</a>*/}
-                        {/*<a href="#">Tk</a>*/}
-                        {/*<a href="#">Em</a>*/}
-                    </div>
                 </div>
             </footer>
         </>
     );
 }
+
+

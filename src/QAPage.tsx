@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect } from 'react';
+import SiteHeader from './SiteHeader';
 import { applySeo } from './seo';
 
 type QAItem = {
@@ -46,8 +47,6 @@ const qaItems: QAItem[] = [
 ];
 
 export default function QAPage() {
-    const [menuOpen, setMenuOpen] = useState(false);
-
     useEffect(() => {
         applySeo({
             title: 'FAQ Thuê Xe Tự Lái Cho Người Mới Tại Thành Phố Hồ Chí Minh - TripDriver',
@@ -71,39 +70,7 @@ export default function QAPage() {
 
     return (
         <>
-            <div className="logo-fixed">
-                <img src="/TripDriverLogo.jpg" alt="TripDriver" />
-            </div>
-
-            <nav className="blended-nav">
-                <a href="/" className="logo flex items-center gap-3">
-                    <img
-                        src="/TripDriverLogo.jpg"
-                        alt="TripDriver"
-                        className="w-[48px] h-[48px] object-cover rounded-full flex-shrink-0"
-                    />
-                    <span className="logo-text">TRIPDRIVER</span>
-                </a>
-
-                <ul className="nav-links">
-                    <li><a href="/#nguoi-dung">Người dùng</a></li>
-                    <li><a href="/#doi-tac">Đối tác</a></li>
-                    <li><a href="/#ve-tripdriver">Về TripDriver</a></li>
-                    <li><a href="/faq-thue-xe-tu-lai">Hỗ trợ</a></li>
-                </ul>
-
-                <button className="menu-btn pointer-events-auto" aria-label="Menu" onClick={() => setMenuOpen(!menuOpen)}>
-                    <span style={{ transform: menuOpen ? 'rotate(45deg) translate(4px, 4px)' : '' }}></span>
-                    <span style={{ transform: menuOpen ? 'rotate(-45deg) translate(4px, -4px)' : '' }}></span>
-                </button>
-            </nav>
-
-            <div className={`mobile-menu ${menuOpen ? 'active' : ''}`}>
-                <a href="/#nguoi-dung" onClick={() => setMenuOpen(false)}>Người dùng</a>
-                <a href="/#doi-tac" onClick={() => setMenuOpen(false)}>Đối tác</a>
-                <a href="/#ve-tripdriver" onClick={() => setMenuOpen(false)}>Về TripDriver</a>
-                <a href="/faq-thue-xe-tu-lai" onClick={() => setMenuOpen(false)}>Hỗ trợ</a>
-            </div>
+            <SiteHeader currentPath="/faq-thue-xe-tu-lai" />
 
             <main className="qa-page">
                 <section className="qa-hero">
@@ -139,7 +106,7 @@ export default function QAPage() {
                     <div className="footer-brand flex flex-col gap-4 max-w-xs">
                         <div className="flex items-center gap-3">
                             <img src="/TripDriverLogo.jpg" alt="TripDriver" className="w-12 h-12 object-contain rounded-full" />
-                            <h2 className="text-2xl font-playfair m-0 tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>TRIPDRIVER</h2>
+                            <h2 className="text-2xl font-playfair m-0 tracking-tight" style={{ fontFamily: "'Lora', serif" }}>TRIPDRIVER</h2>
                         </div>
                         <p>Nền tảng thuê xe tự lái giá rẻ ở TPHCM, kết nối người thuê xe và chủ xe cho trải nghiệm rõ ràng, thuận tiện hơn.</p>
                         <a href="mailto:tripdriver201@gmail.com" className="footer-contact-email">tripdriver201@gmail.com</a>
@@ -148,9 +115,8 @@ export default function QAPage() {
                         <div className="footer-column">
                             <h4>Khám phá</h4>
                             <ul>
-                                <li><a href="/#ve-tripdriver">Về TripDriver</a></li>
-                                <li><a href="/#nguoi-dung">Người dùng</a></li>
-                                <li><a href="/#doi-tac">Đối tác</a></li>
+                                <li><a href="/">Trang chủ</a></li>
+                                <li><a href="/tin-tuc">Tin tức</a></li>
                                 <li><a href="/#ho-tro">Tải ứng dụng</a></li>
                             </ul>
                         </div>
@@ -158,7 +124,6 @@ export default function QAPage() {
                             <h4>Hỗ trợ</h4>
                             <ul>
                                 <li><a href="/faq-thue-xe-tu-lai">Câu hỏi thường gặp</a></li>
-                                <li><a href="/faq-thue-xe-tu-lai">Hướng dẫn sử dụng</a></li>
                                 <li><a href="/faq-thue-xe-tu-lai">Thông tin thuê xe</a></li>
                             </ul>
                         </div>

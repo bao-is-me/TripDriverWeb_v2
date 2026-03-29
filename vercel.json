@@ -3,6 +3,14 @@
     {
       "source": "/faq-thue-xe-tu-lai",
       "destination": "/"
+    },
+    {
+      "source": "/tin-tuc",
+      "destination": "/"
+    },
+    {
+      "source": "/tin-tuc/:slug",
+      "destination": "/"
     }
   ]
 }

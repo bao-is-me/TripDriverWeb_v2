@@ -1,9 +1,26 @@
 import { useEffect, useState } from "react";
 import TripDriverWeb from "./TripDriverWeb";
 import QAPage from "./QAPage";
+import ArticlePage from "./ArticlePage";
+import NewsListingPage from "./NewsListingPage";
+import { articlesBySlug } from "./articleData";
 
 function getCurrentPage() {
-    return window.location.pathname === "/faq-thue-xe-tu-lai" ? "qa" : "home";
+    const pathname = window.location.pathname;
+
+    if (pathname === "/faq-thue-xe-tu-lai") {
+        return { type: "qa" };
+    }
+
+    if (pathname === "/tin-tuc") {
+        return { type: "news" };
+    }
+
+    if (articlesBySlug[pathname]) {
+        return { type: "article", article: articlesBySlug[pathname] };
+    }
+
+    return { type: "home" };
 }
 
 export default function App() {
@@ -15,5 +32,17 @@ export default function App() {
         return () => window.removeEventListener("popstate", handleLocationChange);
     }, []);
 
-    return page === "qa" ? <QAPage /> : <TripDriverWeb />;
+    if (page.type === "qa") {
+        return <QAPage />;
+    }
+
+    if (page.type === "article") {
+        return <ArticlePage article={page.article} />;
+    }
+
+    if (page.type === "news") {
+        return <NewsListingPage />;
+    }
+
+    return <TripDriverWeb />;
 }
