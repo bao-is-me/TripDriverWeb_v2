@@ -7,6 +7,12 @@ type ArticlePageProps = {
     article: ArticleItem;
 };
 
+const checklistSectionHeadings = new Set([
+    'Checklist nhanh cho người thuê lần đầu',
+    '5 điều khoản không nên bỏ qua',
+    'Nếu gặp sự cố khi thuê xe tự lái, hãy nhớ 5 bước',
+]);
+
 export default function ArticlePage({ article }: ArticlePageProps) {
     useEffect(() => {
         applySeo({
@@ -78,16 +84,29 @@ export default function ArticlePage({ article }: ArticlePageProps) {
 
                             {article.sections.map((section, index) => {
                                 const inlineImage = article.inlineImages?.find((item) => item.afterSection === index);
+                                const isChecklistSection = checklistSectionHeadings.has(section.heading);
+                                const articleBlockClassName = [
+                                    'article-block',
+                                    isChecklistSection ? 'article-block-checklist' : '',
+                                ]
+                                    .filter(Boolean)
+                                    .join(' ');
+                                const articleListClassName = [
+                                    'article-list',
+                                    isChecklistSection ? 'article-list-checklist' : '',
+                                ]
+                                    .filter(Boolean)
+                                    .join(' ');
 
                                 return (
                                     <div key={section.heading}>
-                                        <section className="article-block">
+                                        <section className={articleBlockClassName}>
                                             <h2>{section.heading}</h2>
                                             {section.paragraphs?.map((paragraph) => (
                                                 <p key={paragraph}>{paragraph}</p>
                                             ))}
                                             {section.bullets && (
-                                                <ul>
+                                                <ul className={articleListClassName}>
                                                     {section.bullets.map((bullet) => (
                                                         <li key={bullet}>{bullet}</li>
                                                     ))}
